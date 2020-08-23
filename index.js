@@ -59,4 +59,74 @@ function playerScore(event) {
 
 heads.forEach(head => head.addEventListener("click", playerScore));
 
-showHead();
+function startGame() {
+    
+    scoreBoard.textContent = 0;
+    score = 0;
+    timeUp = false;
+    showHead();
+
+    setTimeout(() => {
+
+        timeUp = true;
+
+        setTimeout(() => {
+
+            scoreBoard.textContent = "end";
+
+        }, 2000);
+
+    }, 10000);
+
+}
+
+/* NIVEAUX */
+
+var speed = 50;
+var i = 0;
+var text1 = "NOVICE";
+var j = 0;
+var text2 = "APPRENTI";
+var k = 0;
+var text3 = "EXPERT";
+
+function typeWriter1() {
+    
+    if (i < text1.length) {
+        
+        document.getElementById("demo1").innerHTML += text1.charAt(i); 
+        i++;
+        setTimeout(typeWriter1, speed);
+
+    }
+}
+
+function typeWriter2() {
+    
+    if (j < text2.length) {
+        
+        document.getElementById("demo2").innerHTML += text2.charAt(j); 
+        j++;
+        setTimeout(typeWriter2, speed);
+
+    }
+}
+
+function typeWriter3() {
+    
+    if (k < text3.length) {
+        
+        document.getElementById("demo3").innerHTML += text3.charAt(k); 
+        k++;
+        setTimeout(typeWriter3, speed);
+
+    }
+}
+
+document.getElementById("morty-play").addEventListener('click', function () { 
+
+    typeWriter1();
+    typeWriter2();
+    typeWriter3();
+
+});
